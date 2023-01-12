@@ -1,6 +1,4 @@
-package com.example.cleanarchitecturedemo.feature_user.core
-
-import androidx.annotation.StringRes
+package com.example.cleanarchitecturedemo.core
 
 
 sealed class Resource<T>(val data: T? = null, val message: String? = null) {

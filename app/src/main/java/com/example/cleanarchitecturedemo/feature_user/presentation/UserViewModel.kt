@@ -1,13 +1,12 @@
 package com.example.cleanarchitecturedemo.feature_user.presentation
 
-import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.cleanarchitecturedemo.feature_user.core.Resource
+import com.example.cleanarchitecturedemo.core.Resource
 import com.example.cleanarchitecturedemo.feature_user.domain.state.UserListState
 import com.example.cleanarchitecturedemo.feature_user.domain.use_case.UserListUserCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.delay
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -24,7 +23,7 @@ class UserViewModel @Inject constructor(private val userListUserCase: UserListUs
     }
    private fun getUserListData() {
         viewModelScope.launch {
-            userListUserCase.getUser()
+            userListUserCase.getUser().flowOn(Dispatchers.IO)
                 .onEach { result ->
                     when(result) {
                         is Resource.Success -> {

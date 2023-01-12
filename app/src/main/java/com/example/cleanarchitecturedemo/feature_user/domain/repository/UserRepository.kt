@@ -1,6 +1,6 @@
 package com.example.cleanarchitecturedemo.feature_user.domain.repository
 
-import com.example.cleanarchitecturedemo.feature_user.core.Resource
+import com.example.cleanarchitecturedemo.core.Resource
 import com.example.cleanarchitecturedemo.feature_user.domain.model.UserData
 import kotlinx.coroutines.flow.Flow
 
