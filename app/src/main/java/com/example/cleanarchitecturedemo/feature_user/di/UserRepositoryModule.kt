@@ -1,5 +1,6 @@
 package com.example.cleanarchitecturedemo.feature_user.di
 
+import com.example.cleanarchitecturedemo.feature_user.data.local.UserDao
 import com.example.cleanarchitecturedemo.feature_user.data.remote.ApiService
 import com.example.cleanarchitecturedemo.feature_user.data.repository.UserRepositoryImp
 import com.example.cleanarchitecturedemo.feature_user.domain.repository.UserRepository
@@ -16,8 +17,8 @@ class UserRepositoryModule {
 
     @Provides
     @Singleton
-    fun provideUserRepository(apiService: ApiService):UserRepository{
-        return UserRepositoryImp(apiService)
+    fun provideUserRepository(apiService: ApiService,userDao: UserDao):UserRepository{
+        return UserRepositoryImp(apiService,userDao)
     }
 
     @Provides

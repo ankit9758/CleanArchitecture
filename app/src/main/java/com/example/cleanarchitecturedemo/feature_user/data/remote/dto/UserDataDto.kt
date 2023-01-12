@@ -1,6 +1,6 @@
 package com.example.cleanarchitecturedemo.feature_user.data.remote.dto
 
-import com.example.cleanarchitecturedemo.feature_user.domain.model.UserData
+import com.example.cleanarchitecturedemo.feature_user.data.local.entity.UserEntity
 
 data class UserDataDto(
     val body: String,
@@ -9,8 +9,8 @@ data class UserDataDto(
     val title: String,
     val userId: Int
 ) {
-    fun toUserData(): UserData {
-        return UserData(
+    fun toUserData(): UserEntity {
+        return UserEntity(
             body = body,
             id = id,
             nameData = nameData.map { it.toNameData() },

@@ -1,8 +1,8 @@
-package com.example.cleanarchitecturedemo.feature_user.di
+package com.example.cleanarchitecturedemo.di
 
-import com.example.cleanarchitecturedemo.feature_user.core.AppConstants
-import com.example.cleanarchitecturedemo.feature_user.core.RetrofitNew
-import com.example.cleanarchitecturedemo.feature_user.core.RetrofitS
+import com.example.cleanarchitecturedemo.core.AppConstants
+import com.example.cleanarchitecturedemo.core.RetrofitNew
+import com.example.cleanarchitecturedemo.core.RetrofitS
 import com.example.cleanarchitecturedemo.feature_user.data.remote.ApiService
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -55,16 +55,13 @@ class NetworkModule {
     @Provides
     @Singleton
     @RetrofitS
-    fun provideNewRetrofit(gson: Gson): Retrofit {
+    fun provideNewRetrofit(gson: Gson,okHttpClient:OkHttpClient): Retrofit {
         return Retrofit.Builder()
             .baseUrl(AppConstants.DEFAULT_URL)
+            .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
     }
 
-    @Singleton
-    @Provides
-    fun provideApiService(@RetrofitNew retrofit: Retrofit): ApiService {
-        return retrofit.create(ApiService::class.java)
-    }
+
 }
