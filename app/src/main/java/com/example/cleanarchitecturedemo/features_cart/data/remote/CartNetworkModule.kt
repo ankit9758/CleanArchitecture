@@ -1,7 +1,6 @@
 package com.example.cleanarchitecturedemo.features_cart.data.remote
 
 import com.example.cleanarchitecturedemo.core.RetrofitNew
-import com.example.cleanarchitecturedemo.feature_user.data.remote.ApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

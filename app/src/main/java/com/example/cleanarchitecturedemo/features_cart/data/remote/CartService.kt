@@ -7,5 +7,5 @@ import retrofit2.http.GET
 
 interface CartService {
     @GET(AppConstants.CART_LIST)
-    suspend fun getRemoteUserData(): Response<List<CartDto>>
+    suspend fun getRemoteCartData(): Response<List<CartDto>>
 }

@@ -46,6 +46,9 @@ class UserViewModel @Inject constructor(private val userListUserCase: UserListUs
                                 userList = result.data ?: emptyList(),
                                 isLoading = true
                             )
+                            _eventFlow.emit(UIEvent.ShowSnackBar(
+                                result.message ?: "Unknown error"
+                            ))
                         }
                     }
                 }.launchIn(this)

@@ -12,8 +12,8 @@ import java.io.IOException
 class UserRepositoryImp( private val api: ApiService,private val userDao: UserDao): UserRepository {
     override fun getUserList(): Flow<Resource<List<UserData>>> = flow{
         emit(Resource.Loading())
-        val userList=userDao.getAllUser().map { it.toUser() }
-        emit(Resource.Loading(data = userList))
+//        val userList=userDao.getAllUser().map { it.toUser() }
+//        emit(Resource.Loading(data = userList))
         try {
             val remoteUserData= api.getRemoteUserData()
             userDao.addUserListData(remoteUserData.body()?.map { it.toUserData() }?: emptyList())
